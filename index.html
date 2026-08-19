@@ -1,0 +1,805 @@
+!DOCTYPE html>
+
+<html lang="nl">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>FastLiftService - Verhuislift Antwerpen</title>
+
+  <style>
+
+    * {
+
+      box-sizing: border-box;
+
+      margin: 0;
+
+      padding: 0;
+
+    }
+
+    body {
+
+      font-family: Arial, Helvetica, sans-serif;
+
+      color: #101b36;
+
+      background: #f7f7f7;
+
+    }
+
+    header {
+
+      background: white;
+
+      padding: 18px 4%;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 25px;
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 1000;
+
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+
+    }
+
+    .logo {
+
+      font-size: 38px;
+
+      font-weight: 800;
+
+      font-style: italic;
+
+      color: #102044;
+
+      white-space: nowrap;
+
+    }
+
+    .logo span {
+
+      color: #ed6b0b;
+
+    }
+
+    nav {
+
+      display: flex;
+
+      gap: 32px;
+
+      align-items: center;
+
+    }
+
+    nav a {
+
+      color: #111;
+
+      text-decoration: none;
+
+      font-size: 17px;
+
+      font-weight: 500;
+
+    }
+
+    nav a:hover {
+
+      color: #ed6b0b;
+
+    }
+
+    .buttons {
+
+      display: flex;
+
+      gap: 12px;
+
+    }
+
+    .call-button,
+
+    .whatsapp-button {
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 13px 22px;
+
+      border-radius: 8px;
+
+      font-weight: bold;
+
+      text-align: center;
+
+      min-width: 190px;
+
+    }
+
+    .call-button {
+
+      background: #ed6b0b;
+
+    }
+
+    .whatsapp-button {
+
+      background: #278c25;
+
+    }
+
+    .hero {
+
+      min-height: 560px;
+
+      display: flex;
+
+      align-items: center;
+
+      padding: 70px 6%;
+
+      position: relative;
+
+      overflow: hidden;
+
+      background:
+
+        linear-gradient(90deg, #10151a 0%, #10151a 43%, rgba(16,21,26,.72) 60%, rgba(16,21,26,.15) 100%);
+
+    }
+
+    .hero-content {
+
+      max-width: 620px;
+
+      color: white;
+
+      position: relative;
+
+      z-index: 2;
+
+    }
+
+    .hero h1 {
+
+      font-size: 58px;
+
+      line-height: 1.05;
+
+      margin-bottom: 28px;
+
+    }
+
+    .orange {
+
+      color: #ed6b0b;
+
+    }
+
+    .hero p {
+
+      font-size: 21px;
+
+      line-height: 1.55;
+
+      margin-bottom: 30px;
+
+    }
+
+    .hero-button {
+
+      display: inline-block;
+
+      background: #ed6b0b;
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 16px 28px;
+
+      border-radius: 8px;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+    }
+
+    .features {
+
+      display: flex;
+
+      gap: 30px;
+
+      margin-top: 40px;
+
+      flex-wrap: wrap;
+
+    }
+
+    .feature {
+
+      font-size: 17px;
+
+      border-right: 1px solid #777;
+
+      padding-right: 25px;
+
+    }
+
+    .feature:last-child {
+
+      border-right: none;
+
+    }
+
+    section {
+
+      padding: 65px 6%;
+
+    }
+
+    .section-title {
+
+      text-align: center;
+
+      margin-bottom: 40px;
+
+    }
+
+    .section-title h2 {
+
+      font-size: 40px;
+
+      color: #102044;
+
+      margin-bottom: 8px;
+
+    }
+
+    .section-title p {
+
+      font-size: 18px;
+
+    }
+
+    .price-card {
+
+      background: white;
+
+      max-width: 1100px;
+
+      margin: auto;
+
+      padding: 35px;
+
+      border-radius: 12px;
+
+      box-shadow: 0 5px 25px rgba(0,0,0,0.10);
+
+      display: grid;
+
+      grid-template-columns: 1fr 1fr;
+
+      gap: 40px;
+
+      align-items: center;
+
+    }
+
+    .price-card h3 {
+
+      font-size: 28px;
+
+      margin-bottom: 15px;
+
+    }
+
+    .price {
+
+      font-size: 58px;
+
+      font-weight: 800;
+
+      color: #102044;
+
+    }
+
+    .price small {
+
+      font-size: 25px;
+
+      font-weight: normal;
+
+    }
+
+    .price-info {
+
+      font-size: 18px;
+
+      line-height: 2;
+
+    }
+
+    .price-info strong {
+
+      color: #ed6b0b;
+
+    }
+
+    .note {
+
+      text-align: center;
+
+      margin-top: 25px;
+
+      font-size: 14px;
+
+      color: #555;
+
+    }
+
+    .about {
+
+      background: white;
+
+    }
+
+    .about-container {
+
+      max-width: 1000px;
+
+      margin: auto;
+
+      text-align: center;
+
+    }
+
+    .about h2 {
+
+      font-size: 40px;
+
+      color: #102044;
+
+      margin-bottom: 20px;
+
+    }
+
+    .about p {
+
+      font-size: 19px;
+
+      line-height: 1.7;
+
+      color: #333;
+
+    }
+
+    .contact {
+
+      background: #101b36;
+
+      color: white;
+
+      text-align: center;
+
+    }
+
+    .contact h2 {
+
+      font-size: 40px;
+
+      margin-bottom: 15px;
+
+    }
+
+    .contact p {
+
+      font-size: 19px;
+
+      margin-bottom: 30px;
+
+    }
+
+    .contact-buttons {
+
+      display: flex;
+
+      justify-content: center;
+
+      gap: 15px;
+
+      flex-wrap: wrap;
+
+    }
+
+    footer {
+
+      background: #0b1224;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 25px;
+
+      font-size: 14px;
+
+    }
+
+    @media (max-width: 900px) {
+
+      header {
+
+        flex-direction: column;
+
+      }
+
+      nav {
+
+        gap: 18px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+      }
+
+      .buttons {
+
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+      }
+
+      .hero {
+
+        min-height: 600px;
+
+        padding: 50px 7%;
+
+        background: #10151a;
+
+      }
+
+      .hero h1 {
+
+        font-size: 43px;
+
+      }
+
+      .hero p {
+
+        font-size: 18px;
+
+      }
+
+      .price-card {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      .logo {
+
+        font-size: 30px;
+
+      }
+
+      nav a {
+
+        font-size: 15px;
+
+      }
+
+      .call-button,
+
+      .whatsapp-button {
+
+        width: 100%;
+
+      }
+
+      .hero {
+
+        min-height: 620px;
+
+      }
+
+      .hero h1 {
+
+        font-size: 38px;
+
+      }
+
+      .features {
+
+        display: block;
+
+      }
+
+      .feature {
+
+        border-right: none;
+
+        border-bottom: 1px solid #555;
+
+        padding: 12px 0;
+
+      }
+
+      .section-title h2,
+
+      .about h2,
+
+      .contact h2 {
+
+        font-size: 32px;
+
+      }
+
+      .price {
+
+        font-size: 48px;
+
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+
+    fast <span>lift</span> service
+
+  </div>
+
+  <nav>
+
+    <a href="#home">Home</a>
+
+    <a href="#over-ons">Over ons</a>
+
+    <a href="#tarieven">Tarieven</a>
+
+    <a href="#contact">Contact</a>
+
+  </nav>
+
+  <div class="buttons">
+
+    <a class="call-button" href="tel:0465105559">
+
+      ☎ BEL NU<br>0465 10 55 59
+
+    </a>
+
+    <a class="whatsapp-button" href="https://wa.me/32465105559">
+
+      WhatsApp<br>0465 10 55 59
+
+    </a>
+
+  </div>
+
+</header>
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <h1>
+
+      Verhuizen op hoogte?<br>
+
+      Wij <span class="orange">tillen</span> het voor u.
+
+    </h1>
+
+    <p>
+
+      FastLiftService is uw specialist in verhuisliften
+
+      met bediening in Antwerpen en omgeving.
+
+      Snel, veilig en efficiënt tot op elke verdieping.
+
+    </p>
+
+    <a class="hero-button" href="#contact">
+
+      Vraag vrijblijvend een offerte
+
+    </a>
+
+    <div class="features">
+
+      <div class="feature">
+
+        👤 Lift met bediening
+
+      </div>
+
+      <div class="feature">
+
+        📍 Antwerpen en omgeving
+
+      </div>
+
+      <div class="feature">
+
+        🛡️ Snel, veilig en betrouwbaar
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<section id="tarieven">
+
+  <div class="section-title">
+
+    <h2>Tarieven</h2>
+
+    <p>Duidelijke prijzen, geen verrassingen.</p>
+
+  </div>
+
+  <div class="price-card">
+
+    <div>
+
+      <h3>Verdiep 1 tem 5</h3>
+
+      <div class="price">
+
+        €70 <small>/u</small>
+
+      </div>
+
+    </div>
+
+    <div class="price-info">
+
+      <p>
+
+        <strong>Verdiep 6 tem 9</strong>
+
+        &nbsp; + €10 / verdiep
+
+      </p>
+
+      <p>
+
+        <strong>+30 min</strong>
+
+        &nbsp; €35
+
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="note">
+
+    ℹ️ Alle prijzen zijn exclusief btw.
+
+    Verplaatsingskosten kunnen van toepassing zijn,
+
+    afhankelijk van de locatie.
+
+  </div>
+
+</section>
+
+<section class="about" id="over-ons">
+
+  <div class="about-container">
+
+    <h2>Over FastLiftService</h2>
+
+    <p>
+
+      Een verhuislift nodig in Antwerpen en omgeving?
+
+      FastLiftService helpt u om meubels, dozen en andere
+
+      materialen veilig en efficiënt naar boven of beneden
+
+      te brengen.
+
+    </p>
+
+    <br>
+
+    <p>
+
+      Met bediening, snelle service en duidelijke tarieven
+
+      maken wij uw verhuis een stuk eenvoudiger.
+
+    </p>
+
+  </div>
+
+</section>
+
+<section class="contact" id="contact">
+
+  <h2>Een verhuislift nodig?</h2>
+
+  <p>
+
+    Neem vandaag nog contact met ons op.
+
+  </p>
+
+  <div class="contact-buttons">
+
+    <a class="call-button" href="tel:0465105559">
+
+      ☎ 0465 10 55 59
+
+    </a>
+
+    <a class="whatsapp-button"
+
+       href="https://wa.me/32465105559">
+
+      WhatsApp ons
+
+    </a>
+
+  </div>
+
+</section>
+
+<footer>
+
+  © 2026 FastLiftService.be
+
+  <br>
+
+  Verhuislift Antwerpen en omgeving
+
+</footer>
+
+</body>
+
+</html>
